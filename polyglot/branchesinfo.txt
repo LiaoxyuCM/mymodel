@@ -1,0 +1,14 @@
+Branches & Network
+
+Timeline: (i)nit (u)pdate (f)ork (m)erge (d)elete 
+    stable# iuuuf---+-f---------+-----+------------
+          #     |   | |         |     | 
+    beta  #     |   | +-u-f---+-m-+---m---+--------
+          #     |   |     |   |   |       |
+    alpha #     |   |     +-uumufumu-u-uuum-u------
+          #     |   |           |
+    school#     +-uum-----------|------------d
+    stable#                     |
+          #                     |
+    school#                     +------------d
+    alpha #
