@@ -1,12 +1,11 @@
 class SimpleCounter:
-    def __init__(self) -> None:
-        self.count = 0
-
     def increase(self) -> None:
         self.count += 1
     
     def clear(self) -> None:
         self.count = 0
+
+    __init__ = clear
 
     def __int__(self) -> int:
         return self.count
