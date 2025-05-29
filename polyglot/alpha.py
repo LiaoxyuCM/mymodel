@@ -35,7 +35,7 @@ if __name__ == "__main__":
     pformat = args.PrintFormat
 
     if jap == cap:
-        raise Warning("A maximum of one arg needs to be set at a time, but two or more args are given" if jap else "At least one arg needs to be set at a time, but no any arg is given")
+        raise Exception("A maximum of one arg needs to be set at a time, but two or more args are given" if jap else "At least one arg needs to be set at a time, but no any arg is given")
 
     with open(args.CPPorJSfile, encoding=args.Encoding) as cojf:
         with open(args.PYfile, encoding=args.Encoding) as pf:
@@ -44,9 +44,9 @@ if __name__ == "__main__":
             # Check errors
             if jap:
                 if ("'''" in cojfcontent or '"""' in cojfcontent):
-                    raise Warning("Cannot contain three double quotes or three single quotes in this JavaScript program. It is recommended to use string concatenation.")
+                    raise Exception("Cannot contain three double quotes or three single quotes in this JavaScript program. It is recommended to use string concatenation.")
                 if "*/" in pfcontent:
-                    raise Warning("Cannot contain '*/' in this Python program, it is recommended to use string concatenation.")
+                    raise Exception("Cannot contain '*/' in this Python program, it is recommended to use string concatenation.")
             
             # Add contents into result
             rs += ("1//1;'''\n" if jap else "#if 0\n1 // 1; '''\n#endif\n" if cap else '')
@@ -96,9 +96,9 @@ def compile(polyglotwith: PolyglotWith, JSorCPPcode: str, PYcode: str, CopyResul
     # Check errors
     if polyglotwith == PolyglotWith.JSandPY:
         if ("'''" in cojfcontent or '"""' in cojfcontent):
-            raise Warning("Cannot contain three double quotes or three single quotes in this JavaScript program. It is recommended to use string concatenation.")
+            raise Exception("Cannot contain three double quotes or three single quotes in this JavaScript program. It is recommended to use string concatenation.")
         if "*/" in pfcontent:
-            raise Warning("Cannot contain '*/' in this Python program, it is recommended to use string concatenation.")
+            raise Exception("Cannot contain '*/' in this Python program, it is recommended to use string concatenation.")
     
     # Add contents into result
     rs += ("1//1;'''\n" if polyglotwith == PolyglotWith.JSandPY else "#if 0\n1 // 1; '''\n#endif\n" if polyglotwith == PolyglotWith.CPPandPY else '')
