@@ -1,6 +1,3 @@
-def aiCn(q: str)-> str:
-    return q.strip('吗？?').replace('你', '我')+'!'
-
 def caeserPassword(text: str, offset: int = 1) -> str:
     l = list(text)
     for i in range(len(text)):
@@ -10,11 +7,9 @@ def caeserPassword(text: str, offset: int = 1) -> str:
 
 def superimport(modulename: str, fullnane: str | None = None):
     import os
-    if fullnane == None:
-        fullnane = modulename
     try: module = __import__(modulename)
     except ModuleNotFoundError:
-        os.system(f"pip install {modulename}")
+        os.system(f"pip install {modulename}" if not fullname else f"pip install {fullname}")
         os.system('cls' if os.name == 'nt' else 'clear')
         module = __import__(modulename)
     
