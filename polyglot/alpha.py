@@ -67,9 +67,17 @@ if __name__ == "__main__":
             import pyperclip
             pyperclip.copy(rs)
         except ModuleNotFoundError:
+            import os
             # Fix ModuleNotFoundError
             if input("Module 'pyperclip' not found. To copy the result, this module is required. Install it? [Y/n]> ").lower() == "y":
-                __import__("os").system("pip install pyperclip")
+                print("[Log] Checking... [0/1]")
+                if os.system("pip -V"):
+                    raise Exception("Likes pip is not installed or installer didn't add pip to your path. Please fix it.")
+                else:
+                    print("All checks are passed. [1/1]")
+                    if not os.system("pip install pyperclip"):
+                        print("OK, the module is installed. Please reenter this program to continue")
+                        exit(0)
             else:
                 raise ModuleNotFoundError("Module \"pyperclip\" not found")
 
@@ -113,9 +121,17 @@ def compile(polyglotwith: PolyglotWith, JSorCPPcode: str, PYcode: str, CopyResul
             import pyperclip
             pyperclip.copy(rs)
         except ModuleNotFoundError:
+            import os
             # Fix ModuleNotFoundError
-            if input("Module 'pyperclip' not found. To copy the result, this module is required. Would you like to run \"pip install pyperclip\"? [Y/n]> ").lower() == "y":
-                print("Failed to install pyperclip, please check it" if __import__("os").system("pip install pyperclip") else "Successfully installed pyperclip. Please re-enter this program.")
+            if input("Module 'pyperclip' not found. To copy the result, this module is required. Install it? [Y/n]> ").lower() == "y":
+                print("[Log] Checking... [0/1]")
+                if os.system("pip -V"):
+                    raise Exception("Likes pip is not installed or installer didn't add pip to your path. Please fix it.")
+                else:
+                    print("All checks are passed. [1/1]")
+                    if not os.system("pip install pyperclip"):
+                        print("OK, the module is installed. Please reenter this program to continue")
+                        exit(0)
             else:
                 raise ModuleNotFoundError("Module \"pyperclip\" not found")
     return rs if ReturnFormat == Format.plain else json.dumps({"content": rs}) if ReturnFormat == Format.json else ""

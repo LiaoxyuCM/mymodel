@@ -5,7 +5,7 @@ class SimpleCounter:
     def clear(self) -> None:
         self.count = 0
 
-    __init__ = clear # Quick define function if they are same
+    __init__ = clear # Define function quickly if they are same
 
     def __int__(self) -> int:
         return self.count
@@ -61,7 +61,7 @@ class CounterControlUnit:
     def __str__(self) -> str:
         return f"CounterControlUnit() -> {self.initCnt}"
 
-    __init__ = init # Quick define function if they are same
+    __init__ = init # Define function quickly if they are same
 
 
 def main() -> None:
