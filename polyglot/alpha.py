@@ -7,10 +7,9 @@ if __name__ == "__main__":
     
     # Define arguments
     parser = argparse.ArgumentParser(description='Here is polyglot creator and thank @SugarBreeze_Weifeng and @sally4953 so much.')
-    parser.add_argument('--PolyglotWith', '-pw', type=str, choices=['JSandPY', 'jap', 'jp', 'CPPandPY', 'cap', 'cp', 'pass'], default='pass',
-                        help="Set which two langs are polyglot with. Because we need to address historical legacy issues, so defaults to pass")
-    parser.add_argument('--JSandPY', '-jap', '-jp', action='store_true', help='[Button][Deprecated] Polyglot with JavaScript and Python')
-    parser.add_argument('--CPPandPY', '-cap', '-cp', action='store_true', help='[Button][Deprecated] Polyglot with C++ and Python')
+    polyglotwith = parser.add_mutually_exclusive_group(required=True)
+    polyglotwith.add_argument('--JSandPY', '-jap', '-jp', action='store_true', help='[Button] Polyglot with JavaScript and Python')
+    polyglotwith.add_argument('--CPPandPY', '-cap', '-cp', action='store_true', help='[Button] Polyglot with C++ and Python')
     parser.add_argument('--CPPorJSfile', '-cojf', '-jocf', '-jf', '-cf', type=str, required=True, help='C++ file or JavaScript file')
     parser.add_argument('--PYfile', '-pf', type=str, required=True, help='Python file')
     parser.add_argument('--CopyResult', '-cr', '-cl', '-c', action='store_true',  help='[Button] Copy result to your clipboard')
@@ -25,17 +24,8 @@ if __name__ == "__main__":
     rs = ''
     jap = args.JSandPY
     cap = args.CPPandPY
-    if args.PolyglotWith in ['JSandPY', 'jap', 'jp']:
-        jap = True
-        cap = False
-    if args.PolyglotWith in ['CPPandPY', 'cap', 'cp']:
-        jap = False
-        cap = True
     oformat = args.OutputFormat
     pformat = args.PrintFormat
-
-    if jap == cap:
-        raise Exception("A maximum of one arg needs to be set at a time, but two or more args are given" if jap else "At least one arg needs to be set at a time, but no any arg is given")
 
     with open(args.CPPorJSfile, encoding=args.Encoding) as cojf:
         with open(args.PYfile, encoding=args.Encoding) as pf:
