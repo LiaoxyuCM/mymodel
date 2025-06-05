@@ -1,8 +1,5 @@
 from typing import TypedDict, Any
 
-class chatError(Exception):
-    def __init__(self, yoo: str) -> None: super().__init__(yoo)
-
 class Channel:
     def __init__(self, users: dict = {'admin': True, 'user01': False, 'user02': False}, usingUser: int = 0, passwords: list = ['admin123', '', ''], password: str = 'admin123') -> None:
         if len(users) == len(passwords):
@@ -11,8 +8,8 @@ class Channel:
             self.__msg: list = []
             self.__password: list = passwords
             self.__requests: list[str] = []
-        else: raise chatError()
-        if self.__password[self.__using] != password: raise chatError('r u high, mate?')
+        else: raise Exception()
+        if self.__password[self.__using] != password: raise Exception()
     
     def changeUser(self, usingUser: int = 0, password: str = '') -> None:
         if self.__password[usingUser] == password: self.__using = usingUser

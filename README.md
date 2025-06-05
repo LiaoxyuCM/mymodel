@@ -13,10 +13,3 @@ git clone https://github.com/LiaoxyuCM/mymodel.git
 import mymodel
 ```
 
-## Thanks
-
-1. pwnfunction
-2. SuperBreeze\_weifeng
-
-and more
-
