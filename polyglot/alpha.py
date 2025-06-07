@@ -16,8 +16,8 @@ if __name__ == "__main__":
     parser.add_argument('--HideResult', '-hr', '-H', action='store_true', help='[Button] Tell me about do not show result')
     parser.add_argument('--OutFile', '-of', '-o', type=str, required=False, default='', help='Write result into file')
     parser.add_argument('--Encoding', '-e', type=str, default='utf-8', help='Specify file encoding (default: utf-8)')
-    parser.add_argument('--PrintFormat', '-pformat', '-pfmt', type=str, choices=['plain', 'json'], default='plain', help='Specify print format (default: plain)')
-    parser.add_argument('--OutputFormat', '-oformat', '-ofmt', type=str, choices=['plain', 'json'], default='plain', help='Specify output format (default: plain)')
+    parser.add_argument('--PrintFormat', '-pformat', '-pfmt', '-pF', type=str, choices=['plain', 'json'], default='plain', help='Specify print format (default: plain)')
+    parser.add_argument('--OutputFormat', '-oformat', '-ofmt', '-oF', type=str, choices=['plain', 'json'], default='plain', help='Specify output format (default: plain)')
 
     # Parse arguments
     args = parser.parse_args()
