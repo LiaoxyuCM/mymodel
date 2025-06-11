@@ -1,4 +1,4 @@
-# polyglot.py-alpha-v1.4
+# polyglot.py-alpha-v1.6
 
 import json, enum
 

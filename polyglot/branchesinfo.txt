@@ -1,11 +1,11 @@
 Branches & Network
 
 Timeline: (i)nit (u)pdate (f)ork (m)erge (d)elete 
-    stable# iuuuf---+-f---------+-----+------------
-          #     |   | |         |     | 
-    beta  #     |   | +-u-f---+-m-+---m---+--------
-          #     |   |     |   |   |       |
-    alpha #     |   |     +-uumufumu-u-uuum-uuuu---
+    stable# iuuuf---+-f---------+-----+---------+--------
+          #     |   | |         |     |         |
+    beta  #     |   | +-u-f---+-m-+---m---+-----m+-------
+          #     |   |     |   |   |       |      |
+    alpha #     |   |     +-uumufumu-u-uuum-uuuu-m-------
           #     |   |           |
     school#     +-uum-----------|------------d
     stable#                     |
