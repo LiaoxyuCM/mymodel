@@ -7,32 +7,13 @@ assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+1. Which file?
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+2. What happened?
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+3. How did you see this? \(Not required\)
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+4. Insert photo\(s\) here. \(Not required\)
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
-
-**Additional context**
-Add any other context about the problem here.
+<!-- Please do not remove the above infomation. It is important for me. -->
