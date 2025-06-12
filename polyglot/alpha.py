@@ -10,7 +10,7 @@ if __name__ == "__main__":
     polyglotwith = parser.add_mutually_exclusive_group(required=True)
     polyglotwith.add_argument('--JSandPY', '-jap', '-jp', action='store_true', help='[Button] Polyglot with JavaScript and Python')
     polyglotwith.add_argument('--CPPandPY', '-cap', '-cp', action='store_true', help='[Button] Polyglot with C++ and Python')
-    parser.add_argument('--CPPorJSfile', '-cojf', '-jocf', '-jf', '-cf', type=str, required=True, help='C++ file or JavaScript file')
+    parser.add_argument('--CPPorJSfile', '--CPPfile', '--JSfile', '-cojf', '-jocf', '-jf', '-cf', type=str, required=True, help='C++ file or JavaScript file')
     parser.add_argument('--PYfile', '-pf', type=str, required=True, help='Python file')
     parser.add_argument('--CopyResult', '-cr', '-cl', '-c', action='store_true',  help='[Button] Copy result to your clipboard')
     parser.add_argument('--HideResult', '-hr', '-H', action='store_true', help='[Button] Tell me about do not show result')

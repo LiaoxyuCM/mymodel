@@ -5,7 +5,7 @@ Timeline: (i)nit (u)pdate (f)ork (m)erge (d)elete
           #     |   | |         |     |         |
     beta  #     |   | +-u-f---+-m-+---m---+-----m+-------
           #     |   |     |   |   |       |      |
-    alpha #     |   |     +-uumufumu-u-uuum-uuuu-m-------
+    alpha #     |   |     +-uumufumu-u-uuum-uuuu-mu------
           #     |   |           |
     school#     +-uum-----------|------------d
     stable#                     |
