@@ -79,11 +79,12 @@ class Snake:
         """
         # get the snake's header's X position and Y position
         x, y = self.snake[-1]
-        if   direction == Direction.UP:    y -= 1
-        elif direction == Direction.DOWN:  y += 1
-        elif direction == Direction.LEFT:  x -= 1
-        elif direction == Direction.RIGHT: x += 1
-        
+        match direction:
+            case Direction.UP:    y -= 1
+            case Direction.DOWN:  y += 1
+            case Direction.LEFT:  x -= 1
+            case Direction.RIGHT: x += 1
+
         if x < 0 or x >= len(self.screen[0]) or y < 0 or y >= len(self.screen):
             raise IndexError('Snake moved out of bounds')
         

@@ -1,5 +1,3 @@
-from typing import Callable, Any
-
 class tinyIO:
     def __init__(self):
         self.value = "";self.log = [];
@@ -34,11 +32,4 @@ class stackMemory:
         return self.stack[len(self.stack)-1]
     def clear(self):
         self.stack = []
-
-def funcReturnWriteToTinyIO(i: tinyIO) -> Callable:
-    def decorator(func: Callable) -> Callable:
-        def warpper(*args, **kwargs) -> Any:
-            i.write(func(*args, **kwargs))
-        return warpper
-    return decorator
 
