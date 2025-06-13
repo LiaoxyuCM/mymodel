@@ -26,7 +26,7 @@ body {background-image: linear-gradient(90deg, rgb(84, 30, 36) 0%, rgb(209, 26, 
 </style>
 </head>
 <body>
-<p>Oops!<br>The page is not found!</p>
+<p>Oops!<br>The page did not found!</p>
 <ul>
 <li><a href="..">Return</a></li>
 </ul>

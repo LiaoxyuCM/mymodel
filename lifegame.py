@@ -2,7 +2,7 @@ from typing import Literal
 
 RulesSupportedIndex = list[Literal[0, 1, 2, 3, 4, 5, 6, 7, 8]]
 
-def GenerateGosperGliderGun(size: int = 50):
+def GenerateGosperGliderGun(size: int = 50) -> list[list[bool]]:
     rs = [[False for _ in range(size)] for _ in range(size)]
     if size < 36:
         raise IndexError("I can't put Gosper Glider Gun into this grid (Size is lower than 36)")
@@ -25,7 +25,7 @@ def GenerateGosperGliderGun(size: int = 50):
         rs[8][i] = True
     return rs
 
-def NextGeneration(grid: list[list[bool | Literal[0, 1]]], birth: RulesSupportedIndex = [3], survive: RulesSupportedIndex = [2, 3]) -> list:
+def NextGeneration(grid: list[list[bool]] | list[list[Literal[0, 1]]], birth: RulesSupportedIndex = [3], survive: RulesSupportedIndex = [2, 3]) -> list:
     rows = len(grid)
     cols = len(grid[0]) if rows > 0 else 0
     

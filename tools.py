@@ -5,7 +5,7 @@ def caeserPassword(text: str, offset: int = 1) -> str:
     msg = ''.join(l)
     return msg
 
-def superimport(modulename: str, fullnane: str | None = None):
+def superimport(modulename: str, fullname: str | None = None):
     import os
     try: module = __import__(modulename)
     except ModuleNotFoundError:
