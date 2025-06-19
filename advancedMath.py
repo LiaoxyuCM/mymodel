@@ -100,7 +100,7 @@ def main() -> None:
     b = Frac(4, 10)
 
     print(a, b)
-    print(f" {a.mole}     {b.mole}     {add(a, b).mole} \n--- + ---- = ----\n {a.deno}      {b.deno}     {add(a, b).deno} \n")
+    print(f" {a.mole}     {b.mole}     {plus(a, b).mole} \n--- + ---- = ----\n {a.deno}      {b.deno}     {plus(a, b).deno} \n")
     print(f" {a.mole}     {b.mole}     {times(a, b).mole} \n--- * ---- = ---\n {a.deno}      {b.deno}     {times(a, b).deno} ")
 
 if __name__ == "__main__":
