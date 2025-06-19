@@ -1,3 +1,5 @@
+from warnings import deprecated
+
 class Frac:
     def __init__(self, denominator: int, molecule: int) -> None: 
         self.deno = denominator
@@ -11,7 +13,24 @@ def gcd(x: int, y: int) -> int:
         x, y = y, x % y
     return x
 
+@deprecated("add() is deprecated. Use plus() instead.")
 def add(a: Frac, b: int | Frac) -> Frac:
+    if isinstance(b, int):
+        b = Frac(1, b)
+
+    if a.deno != b.deno:
+        commonnedDeno: int = a.deno * b.deno
+        commonnedMoleWithA = a.mole * b.deno
+        commonnedMoleWithB = b.mole * a.deno
+    else:
+        commonnedDeno: int = a.deno
+        commonnedMoleWithA = a.mole
+        commonnedMoleWithB = b.mole
+
+    commonnedMole: int = commonnedMoleWithA + commonnedMoleWithB
+    return Frac(commonnedDeno // gcd(commonnedDeno, commonnedMole), commonnedMole // gcd(commonnedDeno, commonnedMole))
+
+def plus(a: Frac, b: int | Frac) -> Frac:
     if isinstance(b, int):
         b = Frac(1, b)
 

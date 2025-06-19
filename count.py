@@ -1,3 +1,5 @@
+from warnings import deprecated
+
 class SimpleCounter:
     def increase(self) -> None:
         self.count += 1
@@ -16,29 +18,30 @@ class SimpleCounter:
 class AdvancedCounter(SimpleCounter):
     def __init__(self) -> None:
         super().__init__()
-        self.__saved: dict[str, int] = {}
+        self.saved: dict[str, int] = {}
     
     def decrease(self) -> None:
         if self.count > 0:
             self.count -= 1
     
     def save(self, id: str) -> None:
-        self.__saved[id] = self.count
-    
+        self.saved[id] = self.count
+
+    @deprecated("applySaved() is deprecated. Use {<type AdvancedCounter>}.count = self.saved[{id}] instead.")
     def applySaved(self, id: str) -> None:
-        self.count = self.__saved[id]
+        self.count = self.saved[id]
 
     def read(self, id: str) -> int:
-        return self.__saved[id]
+        return self.saved[id]
     
     def readAll(self) -> dict[str, int]:
-        return self.__saved
+        return self.saved
         
     def deleteSaved(self, id: str) -> None:
-        self.__saved.pop(id)
+        self.saved.pop(id)
     
     def deleteSavedAll(self) -> None:
-        self.__saved = {}
+        self.saved = {}
 
 class CounterControlUnit:
     def init(self, initCnt : SimpleCounter | AdvancedCounter | None = None) -> None:
