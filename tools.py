@@ -16,6 +16,6 @@ def superimport(modulename: str, fullname: str | None = None):
     return module
 
 def main() -> None:
-    pass
+   pass
 if __name__ == "__main__":
     main()

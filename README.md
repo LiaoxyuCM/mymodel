@@ -8,8 +8,6 @@ git clone https://github.com/LiaoxyuCM/mymodel.git
 
 ## Features
 - Easy-to-use Python module for various tasks.
-- Lightweight and fast.
-- Extensible for custom use cases.
 
 ## Usage Examples
 ``` py
