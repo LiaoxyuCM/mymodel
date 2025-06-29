@@ -4,7 +4,7 @@ Other chrs       : Add chrs into the pre-print list
 \.               : Add "." into the pre-print list
 \{comment}.      : Comment, msg of comment will ignore, then do nothing
 \\               : Add "\" into the pre-print list
-\{comment}\      : Comment, msg of comment will ignore, then add "\" into the pre-print list
+\{comment}\      : Comment, msg of comment will ignore, then do nothing
 <Ctrl+C>         : Quit this program      
 Try these now! They are useful when I was debugging.
     Hello.
@@ -40,7 +40,8 @@ def compile(arg: str):
     for i in arg:
         if i == '\\':
             if status:
-                preprint.append('\\')
+                if status != 2:
+                    preprint.append('\\')
                 status = 0
             else:
                 status = 1
@@ -61,31 +62,44 @@ def fill_with_color(arg: str):
     from typing import Literal
     status: Literal[0, 1, 2] = 0
     result: str = ""
+    j = 0
     for i in arg:
         if i == "\\":
             if status == 2:
-                result += "\x1b[93m\\\x1b[0m"
+                result += "\x1b[90m\\\x1b[0m"
                 status = 0
+                j += 1
                 continue
             elif status:
                 result += "\\\x1b[0m"
                 status = 0
+                j += 1
                 continue
             else:
-                result += "\x1b[93m\\"
+                result += "\x1b[93m\\" if arg[j+1] == "." or arg[j+1] == "\\" else "\x1b[90m\\"
+                print(arg[j+1] == ".", arg[j+1] == "\\")
                 status = 1
+                j += 1
                 continue
         elif i == ".":
-            if status:
-                result += "\x1b[95m.\x1b[0m" if status == 2 else ".\x1b[0m"
+            if status == 2:
+                result += "\x1b[90m.\x1b[0m"
                 status = 0
+                j += 1
+                continue
+            elif status:
+                result += ".\x1b[0m"
+                status = 0
+                j += 1
                 continue
             else:
                 result += "\x1b[94m.\x1b[0m"
+                j += 1
                 continue
         elif status:
             result += "\x1b[90m"
             status = 2
+            j += 1
         result += i
     result += "\x1b[0m"
     return result
