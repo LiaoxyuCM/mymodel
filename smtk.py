@@ -68,38 +68,29 @@ def fill_with_color(arg: str):
             if status == 2:
                 result += "\x1b[90m\\\x1b[0m"
                 status = 0
-                j += 1
-                continue
             elif status:
                 result += "\\\x1b[0m"
                 status = 0
-                j += 1
-                continue
             else:
                 result += "\x1b[93m\\" if arg[j+1] == "." or arg[j+1] == "\\" else "\x1b[90m\\"
-                print(arg[j+1] == ".", arg[j+1] == "\\")
                 status = 1
-                j += 1
-                continue
+            j += 1
+            continue
         elif i == ".":
             if status == 2:
                 result += "\x1b[90m.\x1b[0m"
                 status = 0
-                j += 1
-                continue
             elif status:
                 result += ".\x1b[0m"
                 status = 0
-                j += 1
-                continue
             else:
                 result += "\x1b[94m.\x1b[0m"
-                j += 1
-                continue
+            j += 1
+            continue
         elif status:
             result += "\x1b[90m"
             status = 2
-            j += 1
+        j += 1
         result += i
     result += "\x1b[0m"
     return result
