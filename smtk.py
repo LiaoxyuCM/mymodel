@@ -32,7 +32,7 @@ And the last one:
 After this test, I can say this is not a Turing Complete.
 '''
 
-def compile(arg: str):
+def execute(arg: str, return_status: bool = False):
     from typing import Literal
     preprint: list = []
     status: Literal[0, 1, 2] = 0
@@ -56,7 +56,7 @@ def compile(arg: str):
                 preprint = []
         elif status: status = 2
         else: preprint.append(i)
-    return result
+    return (result, status) if return_status else result 
 
 def fill_with_color(arg: str):
     from typing import Literal
@@ -124,7 +124,7 @@ def main():
 
     if ags.input_file:
         with open(ags.input_file, "r") as f:
-            rs = compile(f.read())
+            rs = execute(f.read())
             print(f"\x1b[92m{rs}\x1b[0m" if ags.colorful else rs, end="")
     else:
         if ags.hint:
@@ -133,9 +133,11 @@ def main():
         while True:
             try:
                 ip = input("\x1b[94m>>> \x1b[0m" if ags.colorful and ags.hint else '>>> ' if ags.hint else "")
+                rs, stat = execute(ip, return_status=True)
+                if stat:
+                    raise SyntaxError("Invalid syntax because \"\\\" does not closed.")
                 if ags.hint == 2:
                     print(f"==> {fill_with_color(ip)}" if ags.colorful else f"==> {ip}")
-                rs = compile(ip)
                 if ags.hint == 2:
                     print("-----Out-----")
                 print(f"\x1b[92m{rs}\x1b[0m" if ags.colorful else rs, end="")
