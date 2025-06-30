@@ -1,35 +1,12 @@
-__doc__ = r'''If you do not know how does it work, here is the help msg.
-Other chrs       : Add chrs into the pre-print list
-.                : Print and clear the pre-print list, then create a new line
-\.               : Add "." into the pre-print list
-\{comment}.      : Comment, msg of comment will ignore, then do nothing
-\\               : Add "\" into the pre-print list
-\{comment}\      : Comment, msg of comment will ignore, then do nothing
-<Ctrl+C>         : Quit this program      
-Try these now! They are useful when I was debugging.
-    Hello.
-    Hello
-    Hello\..
-    Hello\.\..
-    Hello\. \..
-    Hello\.\ ..
-    Hello\\.
-    Hello\\\\.
-    Hello \\ \\.
-    Hello\comment..
-    Hello\first comment.\second comment..
-    He\first.\second.llo.
-    He\first. \second.llo.
-    Hello\comment\.
-    Hello\first comment\\second comment\.
-    He\first\\second\llo.
-    He\first\ \second\llo.
-    Line 1.Line 2.
-    Line 1. Line 2.
-    Line 1.Line 2
-And the last one:
-    Message:.1\. AAA;.2\. BBB;.3\. CCC;\Some Message..
-After this test, I can say this is not a Turing Complete.
+'''
+Smtk is a good way to edit multi-line text with single-line text.
+
+Try this CLI!
+If you are new, please run these command (to get help):
+1.  python smtk.py -u
+2.  python smtk.py -h
+Then you can:
+    python smtk.py
 '''
 
 def execute(arg: str, return_status: bool = False):
@@ -99,22 +76,22 @@ def fill_with_color(arg: str):
 def main():
     from argparse import ArgumentParser
     from datetime import datetime
+    from additional_modules import smtkx
 
     psr = ArgumentParser()
     psr.add_argument("-u", "--usage", action="store_true", help="Show usage.")
     psr.add_argument("-if", "--input_file", metavar="FileName", type=str, required=False, help="Input with a file.") # type: ignore
-    psr.add_argument("-H", "--hint", action="count", help="Enable hint.")
+    psr.add_argument("-H", "--hint", action="count", help="Enable hint. Use -HH or two \"--hint\"s to get more detailed.")
     psr.add_argument("-c", "--colorful", action="store_true", help="Switch to the colorful mode")
 
     ags = psr.parse_args()
 
     if ags.usage:
-        print(__doc__)
+        print(smtkx.usage)
         quit()
 
     if ags.colorful:
         try:
-            from .additional_modules import smtkx
             smtkx.colorful_that_under_win10()
         except Exception:
             import sys
