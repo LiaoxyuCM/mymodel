@@ -76,7 +76,10 @@ def fill_with_color(arg: str):
 def main():
     from argparse import ArgumentParser
     from datetime import datetime
-    from additional_modules import smtkx
+    try:
+        from additional_modules import smtkx
+    except:
+        print("File ./additional_modules/smtkx.py not found. You may can't get the usage.")
 
     psr = ArgumentParser()
     psr.add_argument("-u", "--usage", action="store_true", help="Show usage.")
@@ -87,8 +90,11 @@ def main():
     ags = psr.parse_args()
 
     if ags.usage:
-        print(smtkx.usage)
-        quit()
+        try:
+            print(smtkx.usage)
+            quit()
+        except:
+            print("File ./additional_modules/smtkx.py not found. You can't get the usage.\nYou can visit this repo to get it.")
 
     if ags.colorful:
         try:
