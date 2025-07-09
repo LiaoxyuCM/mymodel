@@ -31,7 +31,7 @@ class Channel:
         if self.__user[list(self.__user.keys())[self.__using]]: self.__msg = []
         else: print(f'This user "{list(self.__user.keys())[self.__using]}" is not an admin')
     
-    def sendBot(self, name: str = 'Dyno', msg: str = 'pls don\'t spam'):
+    def sendBot(self, name: str = 'Bot', msg: str = 'pls don\'t spam'):
         if self.__user[list(self.__user.keys())[self.__using]]: self.__msg.append(f'{name}(Bot): {msg}')
         else: print(f'This user "{list(self.__user.keys())[self.__using]}" is not an admin')
     
