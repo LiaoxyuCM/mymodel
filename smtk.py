@@ -79,7 +79,8 @@ def main():
     try:
         from additional_modules import smtkx
     except:
-        print("File ./additional_modules/smtkx.py not found. You may can't get the usage.")
+        print("File ./additional_modules/smtkx.py not found. You can't get the usage.")
+        quit(1)
 
     psr = ArgumentParser()
     psr.add_argument("-u", "--usage", action="store_true", help="Show usage.")
