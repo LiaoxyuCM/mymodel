@@ -18,9 +18,9 @@ usage: str = r'''If you do not know how does it work, here is the help msg.
 Other chrs       : Add chrs into the pre-print list
 .                : Print and clear the pre-print list, then create a new line
 \.               : Add "." into the pre-print list
-\{comment}.      : Comment, msg of comment will ignore, then do nothing
+\comment.        : Comment, comment msg will ignore, then do nothing
 \\               : Add "\" into the pre-print list
-\{comment}\      : Comment, msg of comment will ignore, then do nothing
+\comment\        : Comment, comment msg will ignore, then do nothing
 <Ctrl+C>         : Quit this program
 Try these now! They are useful when I was debugging.
     Hello.

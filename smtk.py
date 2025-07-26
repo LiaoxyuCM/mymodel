@@ -9,33 +9,38 @@ Then you can:
     python smtk.py
 '''
 
-def execute(arg: str, return_status: bool = False):
+
+
+def execute(arg: str, return_status: bool = False) -> str | tuple:
     from typing import Literal
     preprint: list = []
-    status: Literal[0, 1, 2] = 0
+    status: Literal[0, 1, 2, 3] = 0
     result: str = ""
     for i in arg:
         if i == '\\':
             if status:
-                if status != 2:
+                if status == 1:
                     preprint.append('\\')
-                status = 0
+                elif status == 2:
+                    status = 0
             else:
                 status = 1
                 continue
         elif i == '.':
-            if status:
+            if status == 1:
                 if status != 2:
                     preprint.append('.')
                 status = 0
             else:
                 result += ''.join(preprint)+"\n"
                 preprint = []
-        elif status: status = 2
-        else: preprint.append(i)
+        elif status == 1:
+            status = 2
+        else:
+            preprint.append(i)
     return (result, status) if return_status else result 
 
-def fill_with_color(arg: str):
+def fill_with_color(arg: str) -> str:
     from typing import Literal
     status: Literal[0, 1, 2] = 0
     result: str = ""
@@ -74,28 +79,25 @@ def fill_with_color(arg: str):
 
 
 def main():
-    from argparse import ArgumentParser
+    from argparse import ArgumentParser, Namespace
     from datetime import datetime
     try:
         from additional_modules import smtkx
     except:
-        print("File ./additional_modules/smtkx.py not found. You can't get the usage.")
-        quit(1)
+        print("File ./additional_modules/smtkx.py not found. You may can't get the usage.")
+        quit(0)
 
     psr = ArgumentParser()
     psr.add_argument("-u", "--usage", action="store_true", help="Show usage.")
-    psr.add_argument("-if", "--input_file", metavar="FileName", type=str, required=False, help="Input with a file.") # type: ignore
+    psr.add_argument("-if","--input_file", metavar="FileName", type=str, required=False, help="Input with a file.") # type: ignore
     psr.add_argument("-H", "--hint", action="count", help="Enable hint. Use -HH or two \"--hint\"s to get more detailed.")
     psr.add_argument("-c", "--colorful", action="store_true", help="Switch to the colorful mode")
 
-    ags = psr.parse_args()
+    ags: Namespace = psr.parse_args()
 
     if ags.usage:
-        try:
-            print(smtkx.usage)
-            quit()
-        except:
-            print("File ./additional_modules/smtkx.py not found. You can't get the usage.\nYou can visit this repo to get it.")
+        print(smtkx.usage)
+        quit()
 
     if ags.colorful:
         try:
@@ -104,7 +106,7 @@ def main():
             import sys
             if sys.platform == "win32":
                 if sys.getwindowsversion().major < 10:
-                    print("File ./additional_modules/smtkx.py not found. You may get messy codes and not a colorful text")
+                    print("File ./additional_modules/smtkx.py not found. You may get messy codes not a colorful text")
 
     if ags.input_file:
         with open(ags.input_file, "r") as f:
@@ -121,8 +123,7 @@ def main():
                 if stat:
                     raise SyntaxError("Invalid syntax because \"\\\" does not closed.")
                 if ags.hint == 2:
-                    print(f"==> {fill_with_color(ip)}" if ags.colorful else f"==> {ip}")
-                if ags.hint == 2:
+                    print(f"\033[F==> {fill_with_color(ip)}" if ags.colorful else f"\033[F==> {ip}")
                     print("-----Out-----")
                 print(f"\x1b[92m{rs}\x1b[0m" if ags.colorful else rs, end="")
                 if ags.hint == 2:
